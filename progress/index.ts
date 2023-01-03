@@ -7,3 +7,5 @@ export { default as QuaterCircular } from "./QuaterCircular/QuaterCircular";
 export { default as BoxIndicator } from "./BoxIndicator/BoxIndicator";
 export { default as LinearProgress } from "./LinearProgress/LinearProgress";
 export { default as LinearCircularOpacity } from "./LinearCircularOpacity/LinearCircularOpacity";
+export { default as LinearCircularZoom } from "./LinearCircularZoom/LinearCircularZoom";
+export { default as LinearCircularBounce } from "./LinearCircularBounce/LinearCircularBounce";

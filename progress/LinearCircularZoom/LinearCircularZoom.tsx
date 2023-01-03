@@ -1,7 +1,7 @@
 import { Animated, View, StyleSheet } from "react-native";
 import React from "react";
 
-const LinearCircularBounce = () => {
+const LinearCircularZoom = () => {
   const indicatorAnimation1 = React.useRef(new Animated.Value(0)).current;
   const indicatorAnimation2 = React.useRef(new Animated.Value(0)).current;
   const indicatorAnimation3 = React.useRef(new Animated.Value(0)).current;
@@ -31,17 +31,17 @@ const LinearCircularBounce = () => {
       })
     ).start();
   }, []);
-  const translate1 = indicatorAnimation1.interpolate({
+  const scale1 = indicatorAnimation1.interpolate({
     inputRange: [0, 1],
-    outputRange: [10, 0],
+    outputRange: [2, 0],
   });
-  const translate2 = indicatorAnimation2.interpolate({
+  const scale2 = indicatorAnimation2.interpolate({
     inputRange: [0, 1],
-    outputRange: [10, 0],
+    outputRange: [2, 0],
   });
-  const translate3 = indicatorAnimation3.interpolate({
+  const scale3 = indicatorAnimation3.interpolate({
     inputRange: [0, 1],
-    outputRange: [10, 0],
+    outputRange: [2, 0],
   });
   const opacity1 = indicatorAnimation1.interpolate({
     inputRange: [0, 1],
@@ -65,7 +65,7 @@ const LinearCircularBounce = () => {
             {
               transform: [
                 {
-                  translateY: translate1,
+                  scale: scale1,
                 },
               ],
               opacity: opacity1,
@@ -78,7 +78,7 @@ const LinearCircularBounce = () => {
             {
               transform: [
                 {
-                  translateY: translate2,
+                  scale: scale2,
                 },
               ],
               opacity: opacity2,
@@ -91,7 +91,7 @@ const LinearCircularBounce = () => {
             {
               transform: [
                 {
-                  translateY: translate3,
+                  scale: scale3,
                 },
               ],
               opacity: opacity3,
@@ -102,7 +102,7 @@ const LinearCircularBounce = () => {
     </View>
   );
 };
-export default LinearCircularBounce;
+export default LinearCircularZoom;
 
 const styles = StyleSheet.create({
   box: {
@@ -110,6 +110,6 @@ const styles = StyleSheet.create({
     width: 10,
     height: 10,
     borderRadius: 10,
-    margin: 2,
+    margin: 5,
   },
 });

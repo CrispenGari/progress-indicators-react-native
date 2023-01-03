@@ -1,6 +1,6 @@
 import React from "react";
 import { View, ScrollView } from "react-native";
-import { LinearCircularOpacity } from "./progress";
+import { LinearCircularBounce, LinearCircularZoom } from "./progress";
 const App = () => {
   return (
     <View
@@ -11,7 +11,7 @@ const App = () => {
         justifyContent: "center",
       }}
     >
-      <LinearCircularOpacity />
+      <LinearCircularBounce />
     </View>
   );
 };

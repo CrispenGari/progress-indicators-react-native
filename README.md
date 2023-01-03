@@ -11,9 +11,11 @@ In this repository I'm going to show how to create some progress indicators in r
 7. BoxIndicator
 8. LinearProgress
 9. LinearCircularOpacity
+10. LinearCircularZoom
+11. LinearCircularBounce
 
 <p align="center">
-  <img src="cover.gif" alt="cover" width="300"/>
+  <img src="/images/cover.gif" alt="cover" width="300"/>
 </p>
 
 ### Indeterminate Indicator
@@ -73,7 +75,7 @@ export default Indeterminate;
 Preview:
 
 <p align="center">
-  <img src="/IMG_1061.PNG" alt="demo" width="70%"/>
+  <img src="/images/IMG_1061.PNG" alt="demo" width="70%"/>
 </p>
 
 ### Ripple
@@ -120,7 +122,7 @@ export default Ripple;
 Preview:
 
 <p align="center">
-  <img src="/IMG_1063.PNG" alt="demo" width="70%"/>
+  <img src="/images/IMG_1063.PNG" alt="demo" width="70%"/>
 </p>
 
 ### Circular
@@ -168,7 +170,7 @@ export default Circular;
 Preview:
 
 <p align="center">
-  <img src="/IMG_1062.PNG" alt="demo" width="70%"/>
+  <img src="/images/IMG_1062.PNG" alt="demo" width="70%"/>
 </p>
 
 ### DotCircular
@@ -227,7 +229,7 @@ export default DotCircular;
 Preview:
 
 <p align="center">
-  <img src="/IMG_1064.PNG" alt="demo" width="70%"/>
+  <img src="/images/IMG_1064.PNG" alt="demo" width="70%"/>
 </p>
 
 ### DoubleCircular
@@ -276,7 +278,7 @@ export default DoubleCircular;
 Preview:
 
 <p align="center">
-  <img src="/IMG_1065.PNG" alt="demo" width="70%"/>
+  <img src="/images/IMG_1065.PNG" alt="demo" width="70%"/>
 </p>
 
 ### QuaterCircular
@@ -324,7 +326,7 @@ export default QuaterCircular;
 Preview:
 
 <p align="center">
-  <img src="/IMG_1066.PNG" alt="demo" width="70%"/>
+  <img src="/images/IMG_1066.PNG" alt="demo" width="70%"/>
 </p>
 
 ### BoxIndicator
@@ -419,7 +421,7 @@ const styles = StyleSheet.create({
 Preview:
 
 <p align="center">
-  <img src="/IMG_1067.PNG" alt="demo" width="70%"/>
+  <img src="/images/IMG_1067.PNG" alt="demo" width="70%"/>
 </p>
 
 ### LinearProgress
@@ -469,7 +471,7 @@ export default Linear;
 Preview:
 
 <p align="center">
-  <img src="/IMG_1068.PNG" alt="demo" width="70%"/>
+  <img src="/images/IMG_1068.PNG" alt="demo" width="70%"/>
 </p>
 
 ### LinearCircularOpacity
@@ -549,7 +551,263 @@ const styles = StyleSheet.create({
 Preview:
 
 <p align="center">
-  <img src="/IMG_1069.PNG" alt="demo" width="70%"/>
+  <img src="/images/IMG_1069.PNG" alt="demo" width="70%"/>
+</p>
+
+### LinearCircularZoom
+
+The code for creating a `linear-circular-zoom` progress indicator component is as follows:
+
+```ts
+import { Animated, View, StyleSheet } from "react-native";
+import React from "react";
+
+const LinearCircularZoom = () => {
+  const indicatorAnimation1 = React.useRef(new Animated.Value(0)).current;
+  const indicatorAnimation2 = React.useRef(new Animated.Value(0)).current;
+  const indicatorAnimation3 = React.useRef(new Animated.Value(0)).current;
+  React.useEffect(() => {
+    Animated.loop(
+      Animated.timing(indicatorAnimation1, {
+        toValue: 1,
+        delay: 0,
+        duration: 1000,
+        useNativeDriver: false,
+      })
+    ).start();
+    Animated.loop(
+      Animated.timing(indicatorAnimation2, {
+        toValue: 1,
+        delay: 2000,
+        duration: 1000,
+        useNativeDriver: false,
+      })
+    ).start();
+    Animated.loop(
+      Animated.timing(indicatorAnimation3, {
+        toValue: 1,
+        delay: 4000,
+        duration: 1000,
+        useNativeDriver: false,
+      })
+    ).start();
+  }, []);
+  const scale1 = indicatorAnimation1.interpolate({
+    inputRange: [0, 1],
+    outputRange: [2, 0],
+  });
+  const scale2 = indicatorAnimation2.interpolate({
+    inputRange: [0, 1],
+    outputRange: [2, 0],
+  });
+  const scale3 = indicatorAnimation3.interpolate({
+    inputRange: [0, 1],
+    outputRange: [2, 0],
+  });
+  const opacity1 = indicatorAnimation1.interpolate({
+    inputRange: [0, 1],
+    outputRange: [1, 0],
+  });
+  const opacity2 = indicatorAnimation2.interpolate({
+    inputRange: [0, 1],
+    outputRange: [1, 0],
+  });
+  const opacity3 = indicatorAnimation3.interpolate({
+    inputRange: [0, 1],
+    outputRange: [1, 0],
+  });
+
+  return (
+    <View style={{}}>
+      <View style={{ flexDirection: "row" }}>
+        <Animated.View
+          style={[
+            styles.box,
+            {
+              transform: [
+                {
+                  scale: scale1,
+                },
+              ],
+              opacity: opacity1,
+            },
+          ]}
+        />
+        <Animated.View
+          style={[
+            styles.box,
+            {
+              transform: [
+                {
+                  scale: scale2,
+                },
+              ],
+              opacity: opacity2,
+            },
+          ]}
+        />
+        <Animated.View
+          style={[
+            styles.box,
+            {
+              transform: [
+                {
+                  scale: scale3,
+                },
+              ],
+              opacity: opacity3,
+            },
+          ]}
+        />
+      </View>
+    </View>
+  );
+};
+export default LinearCircularZoom;
+
+const styles = StyleSheet.create({
+  box: {
+    backgroundColor: "cornflowerblue",
+    width: 10,
+    height: 10,
+    borderRadius: 10,
+    margin: 5,
+  },
+});
+```
+
+Preview:
+
+<p align="center">
+  <img src="/images/IMG_1076.PNG" alt="demo" width="70%"/>
+</p>
+
+### LinearCircularBounce
+
+The code for creating a `linear-circular-bounce` progress indicator component is as follows:
+
+```ts
+import { Animated, View, StyleSheet } from "react-native";
+import React from "react";
+
+const LinearCircularBounce = () => {
+  const indicatorAnimation1 = React.useRef(new Animated.Value(0)).current;
+  const indicatorAnimation2 = React.useRef(new Animated.Value(0)).current;
+  const indicatorAnimation3 = React.useRef(new Animated.Value(0)).current;
+  React.useEffect(() => {
+    Animated.loop(
+      Animated.timing(indicatorAnimation1, {
+        toValue: 1,
+        delay: 0,
+        duration: 1000,
+        useNativeDriver: false,
+      })
+    ).start();
+    Animated.loop(
+      Animated.timing(indicatorAnimation2, {
+        toValue: 1,
+        delay: 2000,
+        duration: 1000,
+        useNativeDriver: false,
+      })
+    ).start();
+    Animated.loop(
+      Animated.timing(indicatorAnimation3, {
+        toValue: 1,
+        delay: 4000,
+        duration: 1000,
+        useNativeDriver: false,
+      })
+    ).start();
+  }, []);
+  const translate1 = indicatorAnimation1.interpolate({
+    inputRange: [0, 1],
+    outputRange: [10, 0],
+  });
+  const translate2 = indicatorAnimation2.interpolate({
+    inputRange: [0, 1],
+    outputRange: [10, 0],
+  });
+  const translate3 = indicatorAnimation3.interpolate({
+    inputRange: [0, 1],
+    outputRange: [10, 0],
+  });
+  const opacity1 = indicatorAnimation1.interpolate({
+    inputRange: [0, 1],
+    outputRange: [1, 0],
+  });
+  const opacity2 = indicatorAnimation2.interpolate({
+    inputRange: [0, 1],
+    outputRange: [1, 0],
+  });
+  const opacity3 = indicatorAnimation3.interpolate({
+    inputRange: [0, 1],
+    outputRange: [1, 0],
+  });
+
+  return (
+    <View style={{}}>
+      <View style={{ flexDirection: "row" }}>
+        <Animated.View
+          style={[
+            styles.box,
+            {
+              transform: [
+                {
+                  translateY: translate1,
+                },
+              ],
+              opacity: opacity1,
+            },
+          ]}
+        />
+        <Animated.View
+          style={[
+            styles.box,
+            {
+              transform: [
+                {
+                  translateY: translate2,
+                },
+              ],
+              opacity: opacity2,
+            },
+          ]}
+        />
+        <Animated.View
+          style={[
+            styles.box,
+            {
+              transform: [
+                {
+                  translateY: translate3,
+                },
+              ],
+              opacity: opacity3,
+            },
+          ]}
+        />
+      </View>
+    </View>
+  );
+};
+export default LinearCircularBounce;
+
+const styles = StyleSheet.create({
+  box: {
+    backgroundColor: "cornflowerblue",
+    width: 10,
+    height: 10,
+    borderRadius: 10,
+    margin: 2,
+  },
+});
+```
+
+Preview:
+
+<p align="center">
+  <img src="/images/IMG_1082.PNG" alt="demo" width="70%"/>
 </p>
 
 ### License
