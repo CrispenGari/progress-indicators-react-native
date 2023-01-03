@@ -1,3 +1,9 @@
 export { default as Indeterminate } from "./Indeterminate/Indeterminate";
 export { default as Ripple } from "./Ripple/Ripple";
 export { default as Circular } from "./Circular/Circular";
+export { default as DotCircular } from "./DotCircular/DotCircular";
+export { default as DoubleCircular } from "./DoubleCircular/DoubleCircular";
+export { default as QuaterCircular } from "./QuaterCircular/QuaterCircular";
+export { default as BoxIndicator } from "./BoxIndicator/BoxIndicator";
+export { default as LinearProgress } from "./LinearProgress/LinearProgress";
+export { default as LinearCircularOpacity } from "./LinearCircularOpacity/LinearCircularOpacity";

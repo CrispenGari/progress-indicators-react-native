@@ -2,10 +2,10 @@ import { View, Animated } from "react-native";
 import React from "react";
 
 const Indeterminate = () => {
-  const skeletonAnimation = React.useRef(new Animated.Value(0)).current;
+  const indicatorAnimation = React.useRef(new Animated.Value(0)).current;
   React.useEffect(() => {
     Animated.loop(
-      Animated.timing(skeletonAnimation, {
+      Animated.timing(indicatorAnimation, {
         toValue: 1,
         delay: 0,
         duration: 2000,
@@ -14,7 +14,7 @@ const Indeterminate = () => {
     ).start();
   }, []);
 
-  const translateX = skeletonAnimation.interpolate({
+  const translateX = indicatorAnimation.interpolate({
     inputRange: [0, 1],
     outputRange: [-500, 500],
   });

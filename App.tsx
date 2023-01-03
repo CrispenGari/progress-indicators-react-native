@@ -1,7 +1,6 @@
 import React from "react";
 import { View, ScrollView } from "react-native";
-import { Indeterminate, Ripple, Circular } from "./progress";
-
+import { LinearCircularOpacity } from "./progress";
 const App = () => {
   return (
     <View
@@ -12,11 +11,7 @@ const App = () => {
         justifyContent: "center",
       }}
     >
-      <Indeterminate />
-      <View style={{ height: 100 }} />
-      <Circular />
-      <View style={{ height: 100 }} />
-      <Ripple />
+      <LinearCircularOpacity />
     </View>
   );
 };
